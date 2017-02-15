@@ -2,80 +2,106 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
-	<style>
-		.box{
-			width: 250px;
-			height: 250px;
-			border: 1px solid #000;
-			position: relative;
-			margin: 100px auto;
-			transform: rotateX(36deg) rotateY(-19deg);
-			transform-style: preserve-3d;
-			animation:gun 8s linear infinite;
-		}
-		
-		.box>div{
-			position: absolute;
-			left: 0;
-			top: 0;
-			width: 100%;
-			height: 100%;
-			text-align: center;
-			line-height: 250px;
-		}
-
-
-		.left{
-			background-color: rgba(255,0,0,.7);
-			transform: translateX(-50%) rotateY(90deg);
-		}
-		.right{
-			background-color: rgba(255,0,0,.6);
-			transform: translateX(50%) rotateY(90deg);
-		}
-		.up{
-			background-color: rgba(255,0,0,.4);
-			transform:  translateY(-50%) rotateX(90deg);
-		}
-		.down{
-			background-color: rgba(255,0,0,.5);
-			transform: translateY(50%) rotateX(90deg);
-		}
-		.forward{
-			background-color: rgba(255,0,0,.2);
-			transform: translateZ(125px);
-		}
-		.forward{
-			background-color: rgba(255,0,0,.3);
-			transform: translateZ(-125px);
-		}
-
-		@keyframes gun {
-			0%{
-
-			}
-			100%{
-				transform: rotateX(360deg) rotateY(360deg);
-			}
-		}
-
-
-
-
-
-
-	</style>
+	<title>360</title>
+	<link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
-	<div class="box">
-		<div class="forward">前</div>
-		<div class="back">后</div>
-		<div class="left">左</div>
-		<div class="right">右</div>
-		<div class="up">上</div>
-		<div class="down">下</div>
+	<div id="fullpage">
+		<!-- 第一屏 -->
+		<div class="section first">
+			<!-- LOGO -->
+			<div class="logo"></div>
+			<!-- 文字 -->
+			<div class="text">
+				<img src="./images/text_1.png" alt="">
+				<img src="./images/text_2.png" alt="">
+				<img src="./images/text_3.png" alt="">
+				<img src="./images/text_4.png" alt="">
+				<img src="./images/text_5.png" alt="">
+				<img src="./images/text_6.png" alt="">
+				<img src="./images/text_7.png" alt="">
+				<img src="./images/text_8.png" alt="">
+			</div>
+			<!-- 信息 -->
+			<div class="info"></div>
+		</div>
+		<!-- 第二屏 -->
+		<div class="section second">
+			<!-- 盾牌 -->
+			<div class="shield">
+				<img src="./images/shield_1.png" alt="">
+				<img src="./images/shield_2.png" alt="">
+				<img src="./images/shield_3.png" alt="">
+				<img src="./images/shield_4.png" alt="">
+				<img src="./images/shield_5.png" alt="">
+				<img src="./images/shield_6.png" alt="">
+				<img src="./images/shield_7.png" alt="">
+				<img src="./images/shield_8.png" alt="">
+				<img src="./images/shield_9.png" alt="">
+			</div>
+			<!-- 信息 -->
+			<div class="info"></div>
+		</div>
+		<!-- 第三屏 -->
+		<div class="section third">
+			<!-- 信息 -->
+			<div class="info"></div>
+			<!-- 圆环 -->
+			<div class="circle"></div>
+			<!-- 火箭 -->
+			<div class="rocket"></div>
+		</div>
+		<!-- 第四屏 -->
+		<div class="section fourth">
+			<!-- 搜索 -->
+			<div class="search">
+				<div class="key"></div>
+				<div class="input"></div>
+				<div class="wrap">
+					<div class="result"></div>
+				</div>
+			</div>
+			<!-- 信息 -->
+			<div class="info"></div>
+		</div>
+		<!-- 第五屏 -->
+		<div class="section fifth">
+			<!-- 信息 -->
+			<div class="info"></div>
+			<!-- 浏览器 -->
+			<div class="broswer">
+				<!-- 四边框 -->
+				<div class="leftline"></div>
+				<div class="topline"></div>
+				<div class="rightline"></div>
+				<div class="bottomline"></div>
+				<!-- 工具栏 -->
+				<div class="toolbar"></div>
+				<!-- 边框盒子 -->
+				<div class="box">
+					<span></span>
+				</div>
+				<div class="line"></div>
+				<!-- 其它 -->
+				<div class="extra"></div>
+			</div>
+		</div>
 	</div>
-	
+	<script src="./js/jquery.min.js"></script>
+	<script src="./js/jquery.fullPage.min.js"></script>
+	<script>
+		$('#fullpage').fullpage({
+			// 设置背景色
+			sectionsColor : ['#0da5d6', '#2AB561', '#DE8910', '#16BA9D', '#0DA5D6'],
+			afterLoad: function (anchorLink, index) {
+				$('.section').removeClass('current');
+				
+				// 延时100毫秒执行
+				setTimeout(function () {
+					$('.section').eq(index - 1).addClass('current');
+				}, 100);
+			}
+		});
+	</script>
 </body>
 </html>
